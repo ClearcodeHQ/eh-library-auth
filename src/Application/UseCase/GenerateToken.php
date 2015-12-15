@@ -27,6 +27,6 @@ class GenerateToken
             ->sign($signer, $key)
             ->getToken();
 
-        return (string) $token;
+        return $token;
     }
 }

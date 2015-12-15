@@ -5,6 +5,7 @@ namespace Clearcode\EHLibraryAuth;
 
 use Clearcode\EHLibraryAuth\Application\UseCase\Authenticate;
 use Clearcode\EHLibraryAuth\Application\UseCase\GenerateToken;
+use Clearcode\EHLibraryAuth\Application\UseCase\GetUser;
 use Clearcode\EHLibraryAuth\Infrastructure\Persistence\LocalUserRepository;
 use Clearcode\EHLibraryAuth\Application\UseCase\RegisterUser;
 use Lcobucci\JWT\Builder;
@@ -38,5 +39,10 @@ final class Application implements LibraryAuth
     public function generateToken($email)
     {
         return (new GenerateToken(new Builder()))->generate($email, $this->jwtSigner, $this->jwtKey);
+    }
+
+    public function getUser($email)
+    {
+        return (new GetUser(new LocalUserRepository()))->get($email);
     }
 }

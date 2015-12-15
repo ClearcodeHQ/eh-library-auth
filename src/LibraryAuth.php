@@ -9,4 +9,6 @@ interface LibraryAuth
     public function authenticate($token);
 
     public function generateToken($email);
+
+    public function getUser($email);
 }
