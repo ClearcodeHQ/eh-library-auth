@@ -6,6 +6,8 @@ use Behat\Behat\Context\SnippetAcceptingContext;
 use Clearcode\EHLibraryAuth\Infrastructure\Persistence\LocalUserRepository;
 use Clearcode\EHLibraryAuth\LibraryAuth;
 use Clearcode\EHLibraryAuth\Application;
+use Clearcode\EHLibraryAuth\Model\InvalidSignature;
+use Clearcode\EHLibraryAuth\Model\UnrecognizedToken;
 use Clearcode\EHLibraryAuth\Model\User;
 use Clearcode\EHLibraryAuth\Model\UserIsAlreadyRegistered;
 
@@ -57,6 +59,59 @@ class FeatureContext implements SnippetAcceptingContext
         \PHPUnit_Framework_Assert::assertTrue($this->expectedExceptionWasThrown(UserIsAlreadyRegistered::class));
     }
 
+    /**
+     * @Given /I generated a token for (.+)/
+     */
+    public function iGeneratedAToken($email)
+    {
+        $this->project(function() use($email) {
+            return $this->library->generateToken($email);
+        });
+    }
+
+    /**
+     * @When I authenticate using the token
+     */
+    public function iAuthenticateUsingTheToken()
+    {
+        $this->execute(function() {
+            $this->library->authenticate($this->projection);
+        });
+    }
+
+    /**
+     * @Then authentication is successful
+     */
+    public function authenticationIsSuccessful()
+    {
+        \PHPUnit_Framework_Assert::assertEmpty($this->exceptions);
+    }
+
+    /**
+     * @When /I authenticate using the (.+) token/
+     */
+    public function iAuthenticateUsingCustomToken($token)
+    {
+        $this->execute(function() use($token) {
+            $this->library->authenticate($token);
+        });
+    }
+
+    /**
+     * @Then unrecognized token exception should be thrown
+     */
+    public function unrecognizedTokenExceptionShouldBeThrown()
+    {
+        \PHPUnit_Framework_Assert::assertTrue($this->expectedExceptionWasThrown(UnrecognizedToken::class));
+    }
+
+    /**
+     * @Then invalid signature exception is thrown
+     */
+    public function invalidSignatureExceptionIsThrown()
+    {
+        \PHPUnit_Framework_Assert::assertTrue($this->expectedExceptionWasThrown(InvalidSignature::class));
+    }
 
     private function userRepository()
     {
