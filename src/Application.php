@@ -4,7 +4,7 @@ namespace Clearcode\EHLibraryAuth;
 
 
 use Clearcode\EHLibraryAuth\Infrastructure\Persistence\LocalUserRepository;
-use Clearcode\EHLibraryAuth\UseCase\RegisterUser;
+use Clearcode\EHLibraryAuth\Application\UseCase\RegisterUser;
 
 final class Application implements LibraryAuth
 {

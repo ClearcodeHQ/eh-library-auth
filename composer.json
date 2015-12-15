@@ -10,7 +10,9 @@
         }
     ],
     "autoload": {
-        "psr-4" : { "Clearcode\\EHLibraryAuth\\": "src" }
+        "psr-4" : {
+            "Clearcode\\EHLibraryAuth\\": "src"
+        }
     },
     "autoload-dev": {
         "psr-4" : {
@@ -21,6 +23,7 @@
     "prefer-stable": true,
     "require": {
         "php": ">=5.5",
+        "behat/behat": "~3",
         "everzet/persisted-objects": "~1.0"
     },
     "require-dev": {
