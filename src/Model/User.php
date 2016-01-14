@@ -2,8 +2,7 @@
 
 namespace Clearcode\EHLibraryAuth\Model;
 
-
-final class User
+class User
 {
     /** @var string */
     private $email;

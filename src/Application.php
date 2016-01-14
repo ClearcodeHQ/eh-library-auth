@@ -2,7 +2,6 @@
 
 namespace Clearcode\EHLibraryAuth;
 
-
 use Clearcode\EHLibraryAuth\Application\UseCase\Authenticate;
 use Clearcode\EHLibraryAuth\Application\UseCase\GenerateToken;
 use Clearcode\EHLibraryAuth\Application\UseCase\GetUser;

@@ -3,7 +3,6 @@
 
 namespace Clearcode\EHLibraryAuth\Application\UseCase;
 
-
 use Clearcode\EHLibraryAuth\Model\InvalidSignature;
 use Clearcode\EHLibraryAuth\Model\UnrecognizedToken;
 use Lcobucci\JWT\Parser;

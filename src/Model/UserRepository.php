@@ -3,7 +3,6 @@
 
 namespace Clearcode\EHLibraryAuth\Model;
 
-
 interface UserRepository
 {
     /**

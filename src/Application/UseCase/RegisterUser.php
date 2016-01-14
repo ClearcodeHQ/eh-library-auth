@@ -2,7 +2,6 @@
 
 namespace Clearcode\EHLibraryAuth\Application\UseCase;
 
-
 use Clearcode\EHLibraryAuth\Model\User;
 use Clearcode\EHLibraryAuth\Model\UserIsAlreadyRegistered;
 use Clearcode\EHLibraryAuth\Model\UserRepository;

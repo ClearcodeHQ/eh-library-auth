@@ -3,7 +3,6 @@
 
 namespace Clearcode\EHLibraryAuth\Application\UseCase;
 
-
 use Clearcode\EHLibraryAuth\Model\UserRepository;
 
 class GetUser

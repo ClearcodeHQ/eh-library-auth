@@ -3,7 +3,6 @@
 
 namespace Clearcode\EHLibraryAuth\Model;
 
-
 class UserIsAlreadyRegistered extends \Exception
 {
     public static function withEmail($email)
