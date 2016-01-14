@@ -25,21 +25,33 @@ final class Application implements LibraryAuth
         $this->jwtKey = 'MY_JWT_KEY';
     }
 
+    /**
+     * @see LibraryAuth::registerUser
+     */
     public function registerUser($email, array $roles)
     {
         (new RegisterUser(new LocalUserRepository()))->register($email, $roles);
     }
 
+    /**
+     * @see LibraryAuth::authenticate
+     */
     public function authenticate($token)
     {
         (new Authenticate(new Parser()))->authenticate($token, $this->jwtSigner, $this->jwtKey);
     }
 
+    /**
+     * @see LibraryAuth::generateToken
+     */
     public function generateToken($email)
     {
         return (new GenerateToken(new Builder()))->generate($email, $this->jwtSigner, $this->jwtKey);
     }
 
+    /**
+     * @see LibraryAuth::getUser
+     */
     public function getUser($email)
     {
         return (new GetUser(new LocalUserRepository()))->get($email);

@@ -15,7 +15,6 @@ interface LibraryAuth
      * @param string $email
      * @param array $roles
      * @throws UserIsAlreadyRegistered in case there is a user registered using the same email
-     * @return null
      */
     public function registerUser($email, array $roles);
 
@@ -25,7 +24,6 @@ interface LibraryAuth
      * @param string $token JWT
      * @throws UnrecognizedToken if JWT is invalid
      * @throws InvalidSignature if JWT has been tampered
-     * @return null
      */
     public function authenticate($token);
 
